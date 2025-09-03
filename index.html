@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -56,15 +56,19 @@
       const role = document.getElementById("role").value;
       const settlement = document.getElementById("settlement").value;
 
-      // Replace with your Discord webhook URL:
-      const webhookURL = "YOUR_DISCORD_WEBHOOK_URL";
+      // Sheet2API endpoint
+      const sheetAPI = "https://sheet2api.com/v1/RSdcrVpSS7at/logs";
 
       const payload = {
-        content: `📋 **פרטי התחברות חדשים:**\n\n👤 שם: ${name}\n📧 מייל: ${email}\n📞 טלפון: ${phone}\n🛡️ תפקיד בצח"י: ${role}\n🏘️ יישוב: ${settlement}`
+        Name: name,
+        Email: email,
+        Phone: phone,
+        Role: role,
+        Settlement: settlement
       };
 
       try {
-        const res = await fetch(webhookURL, {
+        const res = await fetch(sheetAPI, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
