@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>עזרים - מערכת צח"י</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="assets/css/custom.css" />
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
+<script src="assets/js/app.js"></script>
+<script src="assets/js/data.js"></script>
+
+      <!-- Header -->
+      <header class="bg-gradient-to-r from-blue-900 via-blue-800 to-slate-800 shadow-xl border-b-4 border-red-600">
+        <div class="container mx-auto px-4 py-6">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 bg-gradient-to-r from-red-600 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                <i data-lucide="shield" class="w-10 h-10 text-white"></i>
+              </div>
+              <div>
+                <h1 class="text-3xl font-bold text-white">מערכת צח"י</h1>
+                <p class="text-blue-200 text-lg">סדר פעולות לצוות חירום יישובי</p>
+              </div>
+            </div>
+            <div class="hidden md:flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg p-2">
+              <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+              <span class="text-white text-sm font-medium">מערכת פעילה</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Navigation -->
+      <nav class="bg-white shadow-md border-b border-gray-200">
+        <div class="container mx-auto px-4">
+          <div class="flex overflow-x-auto py-4 gap-2">
+            <a href="index.html" class="flex items-center gap-3 px-6 py-3 rounded-lg transition-all duration-200 whitespace-nowrap font-medium bg-gray-100 text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:shadow-md">
+              <i data-lucide="home" class="w-5 h-5"></i> דף הבית
+            </a>
+            <a href="scenario.html" class="flex items-center gap-3 px-6 py-3 rounded-lg transition-all duration-200 whitespace-nowrap font-medium bg-gray-100 text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:shadow-md">
+              <i data-lucide="alert-triangle" class="w-5 h-5"></i> בחירת תרחיש
+            </a>
+            <a href="checklist.html" class="flex items-center gap-3 px-6 py-3 rounded-lg transition-all duration-200 whitespace-nowrap font-medium bg-gray-100 text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:shadow-md">
+              <i data-lucide="check-square" class="w-5 h-5"></i> צ'ק ליסט
+            </a>
+            <a href="resources.html" class="flex items-center gap-3 px-6 py-3 rounded-lg transition-all duration-200 whitespace-nowrap font-medium bg-blue-600 text-white shadow-lg">
+              <i data-lucide="wrench" class="w-5 h-5"></i> עזרים
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Warning Banner -->
+      <div class="bg-gradient-to-r from-red-600 to-orange-600 text-white py-3">
+        <div class="container mx-auto px-4">
+          <div class="flex items-center justify-center gap-2">
+            <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+            <p class="text-sm font-medium">מערכת זו נועדה לסייע למתנדב בצוות לתת מענה ראשוני והתחלתי לאירוע</p>
+          </div>
+        </div>
+      </div>
+    
+  <main class="container mx-auto px-4 py-8">
+    <div class="max-w-6xl mx-auto space-y-8">
+      <!-- Header -->
+      <div class="text-center space-y-4">
+        <div class="flex justify-center">
+          <div class="w-16 h-16 bg-gradient-to-r from-green-600 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
+            <i data-lucide="wrench" class="w-10 h-10 text-white"></i>
+          </div>
+        </div>
+        <h1 class="text-3xl font-bold text-gray-900">עזרים ומשאבים</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">כלים, אנשי קשר ומידע חיוני לפעילות צח"י</p>
+      </div>
+
+      <!-- Search -->
+      <div class="bg-white rounded-xl border">
+        <div class="p-6">
+          <div class="relative">
+            <i data-lucide="search" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5"></i>
+            <input id="res-search" placeholder="חפשו אנשי קשר, נהלים או ציוד..." class="w-full border rounded-md py-2 pr-10 pl-3 outline-none focus:ring-2 focus:ring-blue-300" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="bg-white rounded-xl border">
+        <div class="p-6">
+          <div class="grid w-full grid-cols-4 gap-2">
+            <button id="tab-contacts" class="px-3 py-2 rounded-md bg-gray-100 text-gray-700 flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4"></i> אנשי קשר</button>
+            <button id="tab-procedures" class="px-3 py-2 rounded-md bg-gray-100 text-gray-700 flex items-center gap-2"><i data-lucide="file-text" class="w-4 h-4"></i> נהלים</button>
+            <button id="tab-equipment" class="px-3 py-2 rounded-md bg-gray-100 text-gray-700 flex items-center gap-2"><i data-lucide="wrench" class="w-4 h-4"></i> ציוד</button>
+            <button id="tab-forms" class="px-3 py-2 rounded-md bg-gray-100 text-gray-700 flex items-center gap-2"><i data-lucide="file-text" class="w-4 h-4"></i> טפסים</button>
+          </div>
+
+          <!-- Panels -->
+          <div id="panel-contacts" class="mt-8">
+            <div id="grid-contacts" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+          </div>
+
+          <div id="panel-procedures" class="mt-8 hidden">
+            <div id="grid-procedures" class="grid md:grid-cols-2 gap-6"></div>
+          </div>
+
+          <div id="panel-equipment" class="mt-8 hidden">
+            <div id="grid-equipment" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+          </div>
+
+          <div id="panel-forms" class="mt-8 hidden">
+            <div id="grid-forms" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Emergency Note -->
+      <div class="bg-red-50 border border-red-200 rounded-xl">
+        <div class="p-6">
+          <h3 class="flex items-center gap-3 text-red-800 text-xl font-bold">
+            <i data-lucide="alert-triangle" class="w-6 h-6"></i> זכרו - במצב חירום
+          </h3>
+          <div class="text-red-700 space-y-2 mt-2">
+            <p>• תמיד חייגו למספרי חירום הרשמיים (100/101/102) לפני פנייה לגורמים מקומיים</p>
+            <p>• ודאו שיש לכם גיבוי לתקשורת (סוללות, מטען נייד)</p>
+            <p>• תעדכנו את רשימות אנשי הקשר באופן שוטף</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+      <!-- Footer -->
+      <footer class="bg-gray-800 text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+          <div class="flex items-center justify-center gap-2 mb-2">
+            <i data-lucide="book-open" class="w-5 h-5"></i>
+            <span class="font-medium">סדר פעולות לצח"י - טל שמיר</span>
+          </div>
+          <p class="text-gray-400 text-sm">למקרה חירום חיוג מידי: משטרה 100 | כיבוי אש 102 | מד"א 101</p>
+        </div>
+      </footer>
+    <script src="assets/js/resources.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+{
+  "name": "EmergencyScenario",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "שם התרחיש"
+    },
+    "description": {
+      "type": "string",
+      "description": "תיאור התרחיש"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "routine",
+        "general_emergency",
+        "specific_threat"
+      ],
+      "description": "קטגוריית התרחיש"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "description": "רמת חשיבות"
+    },
+    "roles_instructions": {
+      "type": "object",
+      "description": "הוראות לפי תפקידים",
+      "properties": {
+        "commander": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "security": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "welfare": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "logistics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "public_info": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "medical": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "education": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [],
+  "rls": {
+    "read": {},
+    "write": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

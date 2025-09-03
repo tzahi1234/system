@@ -1,0 +1,50 @@
+{
+  "name": "Checklist",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "כותרת הצ'ק ליסט"
+    },
+    "scenario": {
+      "type": "string",
+      "description": "התרחיש הרלוונטי"
+    },
+    "role": {
+      "type": "string",
+      "description": "התפקיד הרלוונטי"
+    },
+    "items": {
+      "type": "array",
+      "description": "פריטי הצ'ק ליסט",
+      "items": {
+        "type": "object",
+        "properties": {
+          "task": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "estimated_time": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [],
+  "rls": {
+    "read": {},
+    "write": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

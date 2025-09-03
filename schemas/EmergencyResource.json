@@ -1,0 +1,42 @@
+{
+  "name": "EmergencyResource",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "כותרת הפריט"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "contact",
+        "procedure",
+        "equipment",
+        "form",
+        "reference"
+      ],
+      "description": "סוג המשאב"
+    },
+    "content": {
+      "type": "string",
+      "description": "תוכן הפריט"
+    },
+    "category": {
+      "type": "string",
+      "description": "קטגוריה"
+    },
+    "phone": {
+      "type": "string",
+      "description": "מספר טלפון (אם רלוונטי)"
+    }
+  },
+  "required": [],
+  "rls": {
+    "read": {},
+    "write": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

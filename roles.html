@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>בחירת תפקיד - מערכת צח"י</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="assets/css/custom.css" />
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
+<script src="assets/js/app.js"></script>
+<script src="assets/js/data.js"></script>
+
+      <!-- Header -->
+      <header class="bg-gradient-to-r from-blue-900 via-blue-800 to-slate-800 shadow-xl border-b-4 border-red-600">
+        <div class="container mx-auto px-4 py-6">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 bg-gradient-to-r from-red-600 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                <i data-lucide="shield" class="w-10 h-10 text-white"></i>
+              </div>
+              <div>
+                <h1 class="text-3xl font-bold text-white">מערכת צח"י</h1>
+                <p class="text-blue-200 text-lg">סדר פעולות לצוות חירום יישובי</p>
+              </div>
+            </div>
+            <div class="hidden md:flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg p-2">
+              <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+              <span class="text-white text-sm font-medium">מערכת פעילה</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Navigation -->
+      <nav class="bg-white shadow-md border-b border-gray-200">
+        <div class="container mx-auto px-4">
+          <div class="flex overflow-x-auto py-4 gap-2">
+            <a href="index.html" class="flex items-center gap-3 px-6 py-3 rounded-lg transition-all duration-200 whitespace-nowrap font-medium bg-gray-100 text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:shadow-md">
+              <i data-lucide="home" class="w-5 h-5"></i> דף הבית
+            </a>
+            <a href="scenario.html" class="flex items-center gap-3 px-6 py-3 rounded-lg transition-all duration-200 whitespace-nowrap font-medium bg-gray-100 text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:shadow-md">
+              <i data-lucide="alert-triangle" class="w-5 h-5"></i> בחירת תרחיש
+            </a>
+            <a href="checklist.html" class="flex items-center gap-3 px-6 py-3 rounded-lg transition-all duration-200 whitespace-nowrap font-medium bg-gray-100 text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:shadow-md">
+              <i data-lucide="check-square" class="w-5 h-5"></i> צ'ק ליסט
+            </a>
+            <a href="resources.html" class="flex items-center gap-3 px-6 py-3 rounded-lg transition-all duration-200 whitespace-nowrap font-medium bg-gray-100 text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:shadow-md">
+              <i data-lucide="wrench" class="w-5 h-5"></i> עזרים
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Warning Banner -->
+      <div class="bg-gradient-to-r from-red-600 to-orange-600 text-white py-3">
+        <div class="container mx-auto px-4">
+          <div class="flex items-center justify-center gap-2">
+            <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+            <p class="text-sm font-medium">מערכת זו נועדה לסייע למתנדב בצוות לתת מענה ראשוני והתחלתי לאירוע</p>
+          </div>
+        </div>
+      </div>
+    
+  <main class="container mx-auto px-4 py-8">
+    <div id="missing-scenario" class="hidden max-w-2xl mx-auto text-center space-y-6">
+      <i data-lucide="alert-circle" class="w-16 h-16 text-orange-500 mx-auto"></i>
+      <h2 class="text-2xl font-bold text-gray-900">לא נבחר תרחיש</h2>
+      <p class="text-gray-600">אנא בחרו תרחיש כדי להמשיך</p>
+      <a href="scenario.html" class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md">
+        בחר תרחיש
+      </a>
+    </div>
+
+    <div class="max-w-6xl mx-auto space-y-8">
+      <!-- Header -->
+      <div class="space-y-4">
+        <a href="scenario.html" class="inline-flex items-center gap-2 border rounded-md px-3 py-2 mb-4">
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          חזור לבחירת תרחיש
+        </a>
+        <div class="text-center space-y-4">
+          <span id="badge-scenario" class="inline-flex items-center rounded-md px-3 py-2 text-blue-800 bg-blue-100 text-base"></span>
+          <h1 class="text-3xl font-bold text-gray-900">בחירת תפקיד בצוות</h1>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">אנא בחרו את התפקיד שלכם בצוות צח"י כדי לקבל הנחיות מותאמות</p>
+        </div>
+      </div>
+
+      <!-- Important Note -->
+      <div class="bg-yellow-50 border-r-4 border-yellow-400 p-4 rounded-lg">
+        <div class="flex items-start gap-3">
+          <i data-lucide="alert-circle" class="w-6 h-6 text-yellow-600 mt-1"></i>
+          <div>
+            <h3 class="font-bold text-yellow-800">הערה חשובה</h3>
+            <p class="text-yellow-700">בחרו את התפקיד שהוטל עליכם או את התפקיד שאתם מוכנים לבצע. אם אתם לא בטוחים, תתחילו עם יו"ר צח"י לקבלת התמונה הכללית.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roles Grid -->
+      <div id="roles-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+      <!-- Help Section -->
+      <div class="bg-blue-50 border border-blue-200 rounded-xl">
+        <div class="p-6">
+          <h3 class="flex items-center gap-3 text-blue-800 font-bold text-xl">
+            <i data-lucide="alert-circle" class="w-6 h-6"></i> טיפים לבחירת תפקיד
+          </h3>
+          <div class="mt-3 space-y-2 text-blue-700">
+            <p>• בחרו תפקיד בהתאם להכשרה והניסיון שלכם</p>
+            <p>• יו"ר צח"י מתאים למי שצריך לקבל תמונה כללית</p>
+            <p>• ניתן לעבור בין תפקידים במהלך האירוע</p>
+            <p>• אם יש מספר אנשים באותו תפקיד - תתאמו ביניכם</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+      <!-- Footer -->
+      <footer class="bg-gray-800 text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+          <div class="flex items-center justify-center gap-2 mb-2">
+            <i data-lucide="book-open" class="w-5 h-5"></i>
+            <span class="font-medium">סדר פעולות לצח"י - טל שמיר</span>
+          </div>
+          <p class="text-gray-400 text-sm">למקרה חירום חיוג מידי: משטרה 100 | כיבוי אש 102 | מד"א 101</p>
+        </div>
+      </footer>
+    <script src="assets/js/roles.js"></script>
+</body>
+</html>

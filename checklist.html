@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>צ'ק ליסט - מערכת צח"י</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="assets/css/custom.css" />
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
+<script src="assets/js/app.js"></script>
+<script src="assets/js/data.js"></script>
+
+      <!-- Header -->
+      <header class="bg-gradient-to-r from-blue-900 via-blue-800 to-slate-800 shadow-xl border-b-4 border-red-600">
+        <div class="container mx-auto px-4 py-6">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 bg-gradient-to-r from-red-600 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                <i data-lucide="shield" class="w-10 h-10 text-white"></i>
+              </div>
+              <div>
+                <h1 class="text-3xl font-bold text-white">מערכת צח"י</h1>
+                <p class="text-blue-200 text-lg">סדר פעולות לצוות חירום יישובי</p>
+              </div>
+            </div>
+            <div class="hidden md:flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg p-2">
+              <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+              <span class="text-white text-sm font-medium">מערכת פעילה</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Navigation -->
+      <nav class="bg-white shadow-md border-b border-gray-200">
+        <div class="container mx-auto px-4">
+          <div class="flex overflow-x-auto py-4 gap-2">
+            <a href="index.html" class="flex items-center gap-3 px-6 py-3 rounded-lg transition-all duration-200 whitespace-nowrap font-medium bg-gray-100 text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:shadow-md">
+              <i data-lucide="home" class="w-5 h-5"></i> דף הבית
+            </a>
+            <a href="scenario.html" class="flex items-center gap-3 px-6 py-3 rounded-lg transition-all duration-200 whitespace-nowrap font-medium bg-gray-100 text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:shadow-md">
+              <i data-lucide="alert-triangle" class="w-5 h-5"></i> בחירת תרחיש
+            </a>
+            <a href="checklist.html" class="flex items-center gap-3 px-6 py-3 rounded-lg transition-all duration-200 whitespace-nowrap font-medium bg-blue-600 text-white shadow-lg">
+              <i data-lucide="check-square" class="w-5 h-5"></i> צ'ק ליסט
+            </a>
+            <a href="resources.html" class="flex items-center gap-3 px-6 py-3 rounded-lg transition-all duration-200 whitespace-nowrap font-medium bg-gray-100 text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:shadow-md">
+              <i data-lucide="wrench" class="w-5 h-5"></i> עזרים
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Warning Banner -->
+      <div class="bg-gradient-to-r from-red-600 to-orange-600 text-white py-3">
+        <div class="container mx-auto px-4">
+          <div class="flex items-center justify-center gap-2">
+            <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+            <p class="text-sm font-medium">מערכת זו נועדה לסייע למתנדב בצוות לתת מענה ראשוני והתחלתי לאירוע</p>
+          </div>
+        </div>
+      </div>
+    
+  <main class="container mx-auto px-4 py-8">
+    <div id="missing-checklist" class="hidden max-w-2xl mx-auto text-center space-y-6">
+      <i data-lucide="alert-triangle" class="w-16 h-16 text-orange-500 mx-auto"></i>
+      <h2 class="text-2xl font-bold text-gray-900">לא נבחר תרחיש או תפקיד</h2>
+      <p class="text-gray-600">אנא בחרו תרחיש ותפקיד כדי לראות את הצ'ק ליסט</p>
+    </div>
+
+    <div class="max-w-4xl mx-auto space-y-8">
+      <!-- Header -->
+      <div class="text-center space-y-4">
+        <div class="flex justify-center gap-4 flex-wrap">
+          <span class="inline-flex items-center rounded-md px-3 py-2 text-blue-800 bg-blue-100 text-base">
+            <i data-lucide="target" class="w-4 h-4 ml-2"></i>
+            <span id="cl-badge-scenario"></span>
+          </span>
+          <span class="inline-flex items-center rounded-md px-3 py-2 text-purple-800 bg-purple-100 text-base" id="cl-badge-role"></span>
+        </div>
+        <h1 class="text-3xl font-bold text-gray-900">צ'ק ליסט משימות</h1>
+        <p class="text-xl text-gray-600">עקבו אחר ביצוע המשימות החיוניות</p>
+      </div>
+
+      <!-- Progress Overview -->
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-blue-50 border border-blue-200 rounded-xl">
+          <div class="p-6 text-center">
+            <div class="text-3xl font-bold text-blue-800" id="progress-count">0/0</div>
+            <div class="text-blue-600">משימות הושלמו</div>
+            <div class="mt-3 w-full bg-gray-200 rounded">
+              <div id="progress-bar" class="h-2 bg-blue-600 rounded" style="width:0%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-red-50 border border-red-200 rounded-xl">
+          <div class="p-6 text-center">
+            <div class="text-3xl font-bold text-red-800" id="crit-count">0/0</div>
+            <div class="text-red-600">משימות קריטיות</div>
+          </div>
+        </div>
+        <div class="bg-green-50 border border-green-200 rounded-xl">
+          <div class="p-6 text-center">
+            <div class="text-3xl font-bold text-green-800" id="progress-percent">0%</div>
+            <div class="text-green-600">אחוז השלמה</div>
+            <i data-lucide="trophy" class="w-6 h-6 text-yellow-500 mx-auto mt-2"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checklist Phases -->
+      <div class="bg-white rounded-xl border">
+        <div class="flex items-center justify-between p-6">
+          <h3 class="flex items-center gap-3 text-xl font-bold">
+            <i data-lucide="check-circle" class="w-6 h-6"></i> רשימת המשימות לפי שלבים
+          </h3>
+          <button id="reset-btn" class="inline-flex items-center gap-2 border rounded-md px-3 py-2">
+            <i data-lucide="refresh-cw" class="w-4 h-4"></i> אפס רשימה
+          </button>
+        </div>
+        <div class="px-6 pb-6">
+          <div class="grid w-full grid-cols-3 gap-2">
+            <button id="tab-before" class="px-3 py-2 rounded-md bg-gray-100 text-gray-700">לפני האירוע</button>
+            <button id="tab-during" class="px-3 py-2 rounded-md bg-gray-100 text-gray-700">במהלך האירוע</button>
+            <button id="tab-after" class="px-3 py-2 rounded-md bg-gray-100 text-gray-700">אחרי האירוע</button>
+          </div>
+
+          <div id="panel-before" class="mt-6 hidden">
+            <div class="mb-4">
+              <h3 class="text-xl font-bold text-gray-900 flex items-center gap-3 mb-4">
+                <i data-lucide="clock" class="w-6 h-6 text-blue-600"></i> משימות הכנה - לפני האירוע
+              </h3>
+              <p class="text-gray-600">משימות שיש לבצע בשגרה כהכנה לאירועי חירום</p>
+            </div>
+            <div id="list-before" class="space-y-4"></div>
+          </div>
+
+          <div id="panel-during" class="mt-6">
+            <div class="mb-4">
+              <h3 class="text-xl font-bold text-gray-900 flex items-center gap-3 mb-4">
+                <i data-lucide="alert-triangle" class="w-6 h-6 text-red-600"></i> משימות מיידיות - במהלך האירוע
+              </h3>
+              <p class="text-gray-600">פעולות לביצוע מיידי כאשר האירוע מתרחש</p>
+            </div>
+            <div id="list-during" class="space-y-4"></div>
+          </div>
+
+          <div id="panel-after" class="mt-6 hidden">
+            <div class="mb-4">
+              <h3 class="text-xl font-bold text-gray-900 flex items-center gap-3 mb-4">
+                <i data-lucide="check-circle" class="w-6 h-6 text-green-600"></i> משימות סיום - אחרי האירוע
+              </h3>
+              <p class="text-gray-600">פעולות לביצוע לאחר סיום האירוע ולקראת השגרה</p>
+            </div>
+            <div id="list-after" class="space-y-4"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Completion Message -->
+      <div id="trophy-card" class="hidden bg-green-50 border border-green-200 rounded-xl">
+        <div class="p-6 text-center space-y-3">
+          <i data-lucide="trophy" class="w-12 h-12 text-yellow-500 mx-auto"></i>
+          <h3 class="text-xl font-bold text-green-800">כל הכבוד! סיימתם את כל המשימות</h3>
+          <p class="text-green-700">המשיכו לעקב אחר התפתחות האירוע ובצעו משימות נוספות לפי הצורך</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+      <!-- Footer -->
+      <footer class="bg-gray-800 text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+          <div class="flex items-center justify-center gap-2 mb-2">
+            <i data-lucide="book-open" class="w-5 h-5"></i>
+            <span class="font-medium">סדר פעולות לצח"י - טל שמיר</span>
+          </div>
+          <p class="text-gray-400 text-sm">למקרה חירום חיוג מידי: משטרה 100 | כיבוי אש 102 | מד"א 101</p>
+        </div>
+      </footer>
+    <script src="assets/js/checklist.js"></script>
+</body>
+</html>
